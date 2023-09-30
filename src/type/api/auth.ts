@@ -1,3 +1,5 @@
+import { UserLoginType } from "./User";
+
 export interface LoginParams {
   email: string;
   password: string;
@@ -44,4 +46,16 @@ export interface RegistrationParams {
 export interface ApiResponse {
   status: number;
   msg: string;
+}
+export interface RegistrationResponse {
+  status: boolean;
+  data: {
+    name: string;
+    email: string;
+    login_type: UserLoginType;
+    reference_number: null | string;
+    user_role: string;
+    id: number;
+    token: string;
+  };
 }
