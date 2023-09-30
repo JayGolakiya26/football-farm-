@@ -1,16 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { loginUserAction } from "@redux/actions/auth";
 import { RootState } from "@redux/store";
-import { UserLoginType } from "src/type/api/User";
-
-export interface SignUpUserState {
-  loginType: UserLoginType;
-  ageTermsAccepted: 0 | 1;
-  firstName: string;
-  lastName?: string;
-  email: string;
-  referenceNumber?: string;
-}
+import { SignUpUserState } from "src/type/api/slice/auth";
 
 export interface AuthState {
   token?: string;

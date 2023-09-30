@@ -8,9 +8,6 @@ import { RootState } from "@redux/store";
 import {register} from "@api/auth";
 import {useSelector} from "react-redux";
 import { formatRegisterRequestParams } from "@utils/auth.utils";
-import { SignUpUserState } from "@redux/slices/auth";
-import { useAppNavigation, useAuthNavigation } from "@navigation/hooks";
-// import { formatRegisterRequestParams } from "@utils/auth.utils";
 
 const CreatePasswordScreen = () => {
   const signUpUser = useSelector( (state:RootState) => state.auth.signUpUser);

@@ -1,4 +1,3 @@
-import { SignUpUserState } from "@redux/slices/auth"
 
 export const formatRegisterRequestParams = (values: any)=> {
     return {

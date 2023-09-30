@@ -23,7 +23,8 @@ import { isDesktopWeb } from '@constants/platform';
 import { register } from "@api/auth";
 import { RegistrationParams } from "src/type/api/auth";
 import { useAppDispatch } from "@redux/store";
-import { SignUpUserState, storeSignUpUserInfo } from "@redux/slices/auth";
+import {  storeSignUpUserInfo } from "@redux/slices/auth";
+import { SignUpUserState } from "src/type/api/slice/auth";
 
 const SignupScreen = () => {
   const [loading, setLoading] = useState(false);
