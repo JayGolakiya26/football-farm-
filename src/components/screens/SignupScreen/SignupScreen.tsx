@@ -20,19 +20,16 @@ import { useAppTheme } from '@constants/theme';
 import SocialMediaButton from '@molecules/SocialMediaButtons/SocialMediaButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { isDesktopWeb } from '@constants/platform';
-import { register } from "@api/auth";
-import { RegistrationParams } from "src/type/api/auth";
 import { useAppDispatch } from "@redux/store";
 import {  storeSignUpUserInfo } from "@redux/slices/auth";
 import { SignUpUserState } from "src/type/api/slice/auth";
 
 const SignupScreen = () => {
-  const [loading, setLoading] = useState(false);
   const { navigate } = useAuthNavigation();
   const { t } = useTranslation('signup');
   const { colors } = useAppTheme();
   const dispatch = useAppDispatch();
-  const onSignupPress = (values: any) => {
+  const onSignupPress = (values : {firstname:string , lastname:string , email:string}) => {
     const signUpUser:SignUpUserState = {
       loginType: 1,
       ageTermsAccepted: 1,
@@ -62,7 +59,7 @@ const SignupScreen = () => {
           <LineDraw />
         </OrContainer>
         <SignupText>{t('createaccount')}</SignupText>
-        <FormTemplate Component={SignupForm} onSubmit={onSignupPress} loading={loading} />
+        <FormTemplate Component={SignupForm} onSubmit={onSignupPress} />
         <ButtonContainer>
           <AccountText>{t('ihaveaccount')}</AccountText>
           <SignInButton
