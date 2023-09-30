@@ -7,15 +7,16 @@ import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { RootState } from "@redux/store";
 import {register} from "@api/auth";
 import {useSelector} from "react-redux";
+import { formatRegisterRequestParams } from "@utils/auth.utils";
+import { SignUpUserState } from "@redux/slices/auth";
 // import { formatRegisterRequestParams } from "@utils/auth.utils";
 
 const CreatePasswordScreen = () => {
-  const signUpUser = useSelector( (state:RootState) => state.auth.signUp);
-  // const signUpUserToPass = formatRegisterRequestParams(signUpUser);
+  const signUpUser = useSelector( (state:RootState) => state.auth.signUpUser);
+  const valuesToPass = formatRegisterRequestParams(signUpUser);
   const onSignupPress = async (values:{password:string , confirmpassword:string}) =>{
     try{
-      const response = await register({...signUpUser , password:values.password})
-     console.log(response, 'response')
+      const response = await register({...valuesToPass , password:values.password})
     }
     catch(error){
       console.log(error)
