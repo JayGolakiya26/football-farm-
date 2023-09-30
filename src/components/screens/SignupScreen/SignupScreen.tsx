@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { useAuthNavigation } from '@navigation/hooks';
+import React, { useState } from "react";
+import { useAppNavigation, useAuthNavigation } from '@navigation/hooks';
 import {
   SignupText,
   ButtonContainer,
@@ -16,27 +16,33 @@ import { useTranslation } from 'react-i18next';
 import FormTemplate from '@templates/FormTemplate/FormTemplate';
 import SignupForm from '@organisms/SignupForm/SignupForm';
 import ScreenTemplate from '@templates/ScreenTemplate/ScreenTemplate';
-import {useAppTheme} from '@constants/theme';
+import { useAppTheme } from '@constants/theme';
 import SocialMediaButton from '@molecules/SocialMediaButtons/SocialMediaButton';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {isDesktopWeb} from '@constants/platform';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { isDesktopWeb } from '@constants/platform';
 import { register } from "@api/auth";
 import { RegistrationParams } from "src/type/api/auth";
+import { useAppDispatch } from "@redux/store";
+import { SignUpUserState, storeSignUpUserInfo } from "@redux/slices/auth";
 
 const SignupScreen = () => {
-  const [loading,setLoading] = useState(false);
-  const {navigate} = useAuthNavigation();
-  const {t} = useTranslation('signup');
-  const {colors} = useAppTheme();
-  const onSignupPress = async (values: RegistrationParams) => {
-    try {
-      setLoading(true)
-      register(values);
-      navigate('Welcome');
-    } catch (error) {
-      setLoading(false)
-      console.log(error);
-    }
+  const [loading, setLoading] = useState(false);
+  const { navigate } = useAuthNavigation();
+  const { t } = useTranslation('signup');
+  const { colors } = useAppTheme();
+  const dispatch = useAppDispatch();
+  const onSignupPress = (values: any) => {
+    const signUpUser:SignUpUserState = {
+      loginType: 1,
+      ageTermsAccepted: 1,
+      firstName: values.firstname,
+      lastName: values.lastname,
+      email: values.email,
+    };
+
+    dispatch(storeSignUpUserInfo(signUpUser));
+  
+    navigate('CreatePassword');
   };
   return (
     <ScreenTemplate isBackground={isDesktopWeb ? false : true}>

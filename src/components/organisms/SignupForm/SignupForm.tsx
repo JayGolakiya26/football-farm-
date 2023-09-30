@@ -132,8 +132,8 @@ const SignupForm: React.FC<SignupFormProps> = ({form, loading}) => {
       </Row>
       <GradientButton
         loading={loading}
-        onPress={!isDisabled ? handleSubmit : () => {}}
-        textColor={isDisabled ? colors.disabledTextColor : colors.black}
+        onPress={handleSubmit}
+        textColor={colors.disabledTextColor}
         disabled={isDisabled}
       >
         {t('continue')}
