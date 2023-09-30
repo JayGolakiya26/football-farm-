@@ -65,6 +65,11 @@ const english = {
       'We have sent you instructions to reset your password to',
     description2: '. Please check your email.',
   },
+  createPassword:{
+    password:'Password',
+    confirmPassword:'Confirm Password',
+    signUp:'Finish Sign UP'
+  },
   slides: {
     text1: 'Your Path to\nSoccer Success',
     text2: 'Connect, Showcase,\nand Succeed',
