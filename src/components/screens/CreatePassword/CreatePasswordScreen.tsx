@@ -9,14 +9,18 @@ import {register} from "@api/auth";
 import {useSelector} from "react-redux";
 import { formatRegisterRequestParams } from "@utils/auth.utils";
 import { SignUpUserState } from "@redux/slices/auth";
+import { useAppNavigation, useAuthNavigation } from "@navigation/hooks";
 // import { formatRegisterRequestParams } from "@utils/auth.utils";
 
 const CreatePasswordScreen = () => {
   const signUpUser = useSelector( (state:RootState) => state.auth.signUpUser);
-  const valuesToPass = formatRegisterRequestParams(signUpUser);
   const onSignupPress = async (values:{password:string , confirmpassword:string}) =>{
     try{
+      const valuesToPass = formatRegisterRequestParams(signUpUser);
       const response = await register({...valuesToPass , password:values.password})
+      if (response.data.status === false) {
+        throw new Error("Registration failed. Status is false."); 
+      }
     }
     catch(error){
       console.log(error)
