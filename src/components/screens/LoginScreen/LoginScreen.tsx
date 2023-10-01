@@ -22,6 +22,7 @@ import { useAppTheme } from '@constants/theme';
 import TitleWithButton from '@molecules/TitleWithButton/TitleWithButton';
 import ArrowLeft from '@atoms/Illustration/ArrowLeft';
 import {isDesktopWeb} from '@constants/platform';
+import { UserLoginType } from 'src/type/api/User';
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +35,7 @@ const LoginScreen = () => {
         loginUserAction({
           email: values.email,
           password: values.password,
+          loginType:1
         })
       ).unwrap();
       navigate('Welcome')

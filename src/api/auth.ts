@@ -3,7 +3,11 @@ import { api } from './api';
 import { AxiosPromise } from 'axios';
 
 export const login = (body: LoginParams): AxiosPromise<LoginResponse> =>
-  api.post(`/login`, body)
+  api.post(`/login`, body,{
+    headers:{
+      'Content-Type': 'application/json',
+    }
+});
   export const register = (body: RegistrationParams): AxiosPromise<RegistrationResponse> => {
     return api.post('/register', body,{
       headers:{

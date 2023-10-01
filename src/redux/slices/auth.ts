@@ -45,7 +45,10 @@ const authSlice = createSlice({
     builder.addCase(loginUserAction.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(loginUserAction.fulfilled, sharedLoadingReset);
+    builder.addCase(loginUserAction.fulfilled, (state,action)=>{
+      sharedLoadingReset(state)
+      console.log(action.payload)
+    });
     builder.addCase(loginUserAction.rejected, sharedLoadingReset);
   },
 });
