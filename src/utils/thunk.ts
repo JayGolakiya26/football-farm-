@@ -6,7 +6,7 @@ export function withToastForError<Args, Response extends ApiResponse>(
   return async (args: Args, { rejectWithValue }: any) => {
     try {
       const response: Response = await payloadCreator(args);
-      if (response.status !== 200) {
+      if (!response.status) {
         return rejectWithValue(response.msg);
       }
     } catch (err: any) {

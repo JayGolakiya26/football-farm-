@@ -18,6 +18,7 @@ export interface MediaModel {
 }
 export interface LoginResponse {
   status: boolean;
+  msg:string;
   data: {
     name: string;
     email: string;
@@ -36,7 +37,7 @@ export interface RegistrationParams {
   password: string;
 }
 export interface ApiResponse {
-  status: number;
+  status: boolean;
   msg: string;
 }
 export interface RegistrationResponse {

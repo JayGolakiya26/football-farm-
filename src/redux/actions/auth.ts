@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { LoginParams, LoginResponse } from 'src/type/api/auth';
 import { login } from '@api/auth';
-import {withToastForError} from '@utils/thunk'
+import { withToastForError } from '@utils/thunk'
 
 export const loginUserAction = createAsyncThunk(
   'auth/loginUser',
