@@ -35,7 +35,7 @@ const LoginScreen = () => {
         loginUserAction({
           email: values.email,
           password: values.password,
-          loginType:1
+          login_type:1
         })
       ).unwrap();
       navigate('Welcome')
